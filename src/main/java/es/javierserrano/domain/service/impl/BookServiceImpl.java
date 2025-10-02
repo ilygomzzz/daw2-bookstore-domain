@@ -2,7 +2,7 @@ package es.javierserrano.domain.service.impl;
 
 import es.javierserrano.domain.exception.ResourceNotFoundException;
 import es.javierserrano.domain.mapper.BookMapper;
-import es.javierserrano.domain.model.book.Book;
+import es.javierserrano.domain.model.Book;
 import es.javierserrano.domain.model.Page;
 import es.javierserrano.domain.repository.BookRepository;
 import es.javierserrano.domain.repository.entity.BookEntity;

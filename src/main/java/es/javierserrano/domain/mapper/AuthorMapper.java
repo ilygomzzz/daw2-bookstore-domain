@@ -1,10 +1,7 @@
 package es.javierserrano.domain.mapper;
 
-import es.javierserrano.domain.exception.BusinessException;
 import es.javierserrano.domain.exception.ValidationException;
 import es.javierserrano.domain.model.Author;
-import es.javierserrano.domain.model.shared.Name;
-import es.javierserrano.domain.model.shared.Slug;
 import es.javierserrano.domain.repository.entity.AuthorEntity;
 import es.javierserrano.domain.service.dto.AuthorDto;
 
@@ -27,13 +24,13 @@ public class AuthorMapper {
         try {
             return new Author(
                     authorEntity.id(),
-                    new Name(authorEntity.name()),
+                    authorEntity.name(),
                     authorEntity.nationality(),
                     authorEntity.biographyEs(),
                     authorEntity.biographyEn(),
                     authorEntity.birthYear(),
                     authorEntity.deathYear(),
-                    new Slug(authorEntity.slug())
+                    authorEntity.slug()
             );
         } catch (ValidationException e) {
             return null;
@@ -81,13 +78,13 @@ public class AuthorMapper {
 
         return new Author(
                 authorDto.id(),
-                new Name(authorDto.name()),
+                authorDto.name(),
                 authorDto.nationality(),
                 authorDto.biographyEs(),
                 authorDto.biographyEn(),
                 authorDto.birthYear(),
                 authorDto.deathYear(),
-                new Slug(authorDto.slug())
+                authorDto.slug()
         );
     }
 }

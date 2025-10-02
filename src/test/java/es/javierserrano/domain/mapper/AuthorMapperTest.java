@@ -1,10 +1,6 @@
 package es.javierserrano.domain.mapper;
 
-import es.javierserrano.domain.exception.BusinessException;
-import es.javierserrano.domain.exception.ValidationException;
 import es.javierserrano.domain.model.Author;
-import es.javierserrano.domain.model.shared.Name;
-import es.javierserrano.domain.model.shared.Slug;
 import es.javierserrano.domain.repository.entity.AuthorEntity;
 import es.javierserrano.domain.service.dto.AuthorDto;
 import org.junit.jupiter.api.DisplayName;
@@ -40,20 +36,6 @@ class AuthorMapperTest {
         void fromAuthorEntityToAuthorNullTest() {
             assertNull(AuthorMapper.getInstance().fromAuthorEntityToAuthor(null));
         }
-
-        @Test
-        @DisplayName("Given AuthorEntity with null name should return null")
-        void fromAuthorEntityToAuthorWithNullNameTest() {
-            AuthorEntity authorEntity = new AuthorEntity(1L, null, "cualquiera", null, null, 0, null, "asdfa");
-            assertNull(AuthorMapper.getInstance().fromAuthorEntityToAuthor(authorEntity));
-        }
-
-        @Test
-        @DisplayName("Given AuthorEntity with null slug should return null")
-        void fromAuthorEntityToAuthorWithNullSlugTest() {
-            AuthorEntity authorEntity = new AuthorEntity(1L, "asdfa", "cualquiera", null, null, 0, null, null);
-            assertNull(AuthorMapper.getInstance().fromAuthorEntityToAuthor(authorEntity));
-        }
     }
 
     @Nested
@@ -61,7 +43,7 @@ class AuthorMapperTest {
         @Test
         @DisplayName("Given Author should return AuthorEntity")
         void fromAuthorToAuthorEntityTest() {
-            Author author = new Author(1L, new Name("name"), "nationality", "biographyEs", "biographyEn", 1990, 2020, new Slug("slug"));
+            Author author = new Author(1L, "name", "nationality", "biographyEs", "biographyEn", 1990, 2020, "slug");
 
             AuthorEntity authorEntity = AuthorMapper.getInstance().fromAuthorToAuthorEntity(author);
 
@@ -88,7 +70,7 @@ class AuthorMapperTest {
         @Test
         @DisplayName("Given Author should return AuthorDto")
         void fromAuthorToAuthorDtoTest() {
-            Author author = new Author(1L, new Name("name"), "nationality", "biographyEs", "biographyEn", 1990, 2020, new Slug("slug"));
+            Author author = new Author(1L, "name", "nationality", "biographyEs", "biographyEn", 1990, 2020, "slug");
 
             var authorDto = AuthorMapper.getInstance().fromAuthorToAuthorDto(author);
 
@@ -132,20 +114,6 @@ class AuthorMapperTest {
         @DisplayName("Given null AuthorDto should return null")
         void fromAuthorDtoToAuthorNullTest() {
             assertNull(AuthorMapper.getInstance().fromAuthorDtoToAuthor(null));
-        }
-
-        @Test
-        @DisplayName("Given AuthorDto with null name should throw ValidationException")
-        void fromAuthorDtoToAuthorWithNullNameTest() {
-            var authorDto = new AuthorDto(1L, null, "cualquiera", null, null, 0, null, "asdfa");
-            assertThrows(ValidationException.class, () -> AuthorMapper.getInstance().fromAuthorDtoToAuthor(authorDto));
-        }
-
-        @Test
-        @DisplayName("Given AuthorDto with empty slug should throw ValidationException")
-        void fromAuthorDtoToAuthorWithEmptySlugTest() {
-            var authorDto = new AuthorDto(1L, "asdfa", "cualquiera", null, null, 0, null, "");
-            assertThrows(ValidationException.class, () -> AuthorMapper.getInstance().fromAuthorDtoToAuthor(authorDto));
         }
     }
 }

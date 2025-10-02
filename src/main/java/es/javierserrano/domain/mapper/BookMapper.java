@@ -3,16 +3,13 @@ package es.javierserrano.domain.mapper;
 import es.javierserrano.domain.exception.BusinessException;
 import es.javierserrano.domain.exception.ValidationException;
 import es.javierserrano.domain.model.Author;
-import es.javierserrano.domain.model.book.BasePrice;
-import es.javierserrano.domain.model.book.Book;
-import es.javierserrano.domain.model.book.Isbn;
+import es.javierserrano.domain.model.Book;
 import es.javierserrano.domain.repository.entity.AuthorEntity;
 import es.javierserrano.domain.repository.entity.BookEntity;
 import es.javierserrano.domain.service.dto.AuthorDto;
 import es.javierserrano.domain.service.dto.BookDto;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class BookMapper {
@@ -39,12 +36,12 @@ public class BookMapper {
         try{
             return new Book(
                     bookEntity.id(),
-                    new Isbn(bookEntity.isbn()),
+                    bookEntity.isbn(),
                     bookEntity.titleEs(),
                     bookEntity.titleEn(),
                     bookEntity.synopsisEs(),
                     bookEntity.synopsisEn(),
-                    new BasePrice(bookEntity.basePrice()),
+                    bookEntity.basePrice(),
                     bookEntity.discountPercentage(),
                     bookEntity.cover(),
                     bookEntity.publicationDate(),
@@ -59,9 +56,9 @@ public class BookMapper {
 
     public BookEntity fromBookToBookEntity(Book book) {
         if (book == null) {
-            throw new BusinessException("Book cannot be null");
+            return null;
         }
-        List<AuthorEntity> authors = Collections.emptyList();
+        List<AuthorEntity> authors = new ArrayList<>();
         if (book.getAuthors() != null && !book.getAuthors().isEmpty()) {
             authors = book.getAuthors().stream().map(AuthorMapper.getInstance()::fromAuthorToAuthorEntity).toList();
         }
@@ -83,10 +80,10 @@ public class BookMapper {
 
     public BookDto fromBookToBookDto(Book book) {
         if (book == null) {
-            throw new BusinessException("Book cannot be null");
+            return null;
         }
 
-        List<AuthorDto> authors = Collections.emptyList();
+        List<AuthorDto> authors = new ArrayList<>();
         if (book.getAuthors() != null && !book.getAuthors().isEmpty()) {
             authors = book.getAuthors().stream().map(AuthorMapper.getInstance()::fromAuthorToAuthorDto).toList();
         }
@@ -109,16 +106,16 @@ public class BookMapper {
 
     public Book fromBookDtoToBook(BookDto bookDto) {
         if (bookDto == null) {
-            throw new BusinessException("BookDto cannot be null");
+           return null;
         }
         Book book = new Book(
                 bookDto.id(),
-                new Isbn(bookDto.isbn()),
+                bookDto.isbn(),
                 bookDto.titleEs(),
                 bookDto.titleEn(),
                 bookDto.synopsisEs(),
                 bookDto.synopsisEn(),
-                new BasePrice(bookDto.basePrice()),
+                bookDto.basePrice(),
                 bookDto.discountPercentage(),
                 bookDto.cover(),
                 bookDto.publicationDate(),

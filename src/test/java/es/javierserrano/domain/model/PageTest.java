@@ -1,8 +1,5 @@
 package es.javierserrano.domain.model;
 
-import es.javierserrano.domain.model.book.BasePrice;
-import es.javierserrano.domain.model.book.Book;
-import es.javierserrano.domain.model.book.Isbn;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -26,12 +23,12 @@ class PageTest {
             List<Book> data = List.of(
                     new Book(
                             4L,
-                            new Isbn("978-3-16-148410-0"),
+                            "978-3-16-148410-0",
                             "Título en Español",
                             "Title in English",
                             "Sinopsis en Español",
                             "Synopsis in English",
-                            new BasePrice(new BigDecimal("50.00")),
+                            new BigDecimal("50.00"),
                             10.0,
                             "cover.jpg",
                             LocalDate.of(2023, 1, 1),
@@ -51,12 +48,12 @@ class PageTest {
             List<Book> data = List.of(
                     new Book(
                             5L,
-                            new Isbn("978-3-16-148410-0"),
+                            "978-3-16-148410-0",
                             "Título en Español",
                             "Title in English",
                             "Sinopsis en Español",
                             "Synopsis in English",
-                            new BasePrice(new BigDecimal("50.00")),
+                            new BigDecimal("50.00"),
                             10.0,
                             "cover.jpg",
                             LocalDate.of(2023, 1, 1),
@@ -76,12 +73,12 @@ class PageTest {
             List<Book> data = List.of(
                     new Book(
                             6L,
-                            new Isbn("978-3-16-148410-0"),
+                            "978-3-16-148410-0",
                             "Título en Español",
                             "Title in English",
                             "Sinopsis en Español",
                             "Synopsis in English",
-                            new BasePrice(new BigDecimal("50.00")),
+                            new BigDecimal("50.00"),
                             10.0,
                             "cover.jpg",
                             LocalDate.of(2023, 1, 1),
@@ -90,12 +87,12 @@ class PageTest {
                     ),
                     new Book(
                             2L,
-                            new Isbn("978-3-16-148412-0"),
+                            "978-3-16-148412-0",
                             "Título en Español",
                             "Title in English",
                             "Sinopsis en Español",
                             "Synopsis in English",
-                            new BasePrice(new BigDecimal("50.00")),
+                            new BigDecimal("50.00"),
                             10.0,
                             "cover.jpg",
                             LocalDate.of(2023, 1, 1),
@@ -118,12 +115,12 @@ class PageTest {
             List<Book> data = List.of(
                     new Book(
                             1L,
-                            new Isbn("978-3-16-148410-0"),
+                            "978-3-16-148410-0",
                             "Título en Español",
                             "Title in English",
                             "Sinopsis en Español",
                             "Synopsis in English",
-                            new BasePrice(new BigDecimal("50.00")),
+                            new BigDecimal("50.00"),
                             10.0,
                             "cover.jpg",
                             LocalDate.of(2023, 1, 1),
@@ -143,12 +140,12 @@ class PageTest {
             List<Book> data = List.of(
                     new Book(
                             1L,
-                            new Isbn("978-3-16-148410-0"),
+                            "978-3-16-148410-0",
                             "Título en Español",
                             "Title in English",
                             "Sinopsis en Español",
                             "Synopsis in English",
-                            new BasePrice(new BigDecimal("50.00")),
+                            new BigDecimal("50.00"),
                             10.0,
                             "cover.jpg",
                             LocalDate.of(2023, 1, 1),
@@ -171,12 +168,12 @@ class PageTest {
             List<Book> data = List.of(
                     new Book(
                             1L,
-                            new Isbn("978-3-16-148410-0"),
+                            "978-3-16-148410-0",
                             "Título en Español",
                             "Title in English",
                             "Sinopsis en Español",
                             "Synopsis in English",
-                            new BasePrice(new BigDecimal("50.00")),
+                            new BigDecimal("50.00"),
                             10.0,
                             "cover.jpg",
                             LocalDate.of(2023, 1, 1),
@@ -196,12 +193,12 @@ class PageTest {
             List<Book> data = List.of(
                     new Book(
                             2L,
-                            new Isbn("978-3-16-148410-0"),
+                            "978-3-16-148410-0",
                             "Título en Español",
                             "Title in English",
                             "Sinopsis en Español",
                             "Synopsis in English",
-                            new BasePrice(new BigDecimal("50.00")),
+                            new BigDecimal("50.00"),
                             10.0,
                             "cover.jpg",
                             LocalDate.of(2023, 1, 1),

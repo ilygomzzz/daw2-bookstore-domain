@@ -2,12 +2,8 @@ package es.javierserrano.domain.mapper;
 
 import es.javierserrano.domain.exception.BusinessException;
 import es.javierserrano.domain.model.Author;
-import es.javierserrano.domain.model.book.BasePrice;
-import es.javierserrano.domain.model.book.Book;
+import es.javierserrano.domain.model.Book;
 import es.javierserrano.domain.model.Publisher;
-import es.javierserrano.domain.model.book.Isbn;
-import es.javierserrano.domain.model.shared.Name;
-import es.javierserrano.domain.model.shared.Slug;
 import es.javierserrano.domain.repository.entity.AuthorEntity;
 import es.javierserrano.domain.repository.entity.BookEntity;
 import es.javierserrano.domain.repository.entity.PublisherEntity;
@@ -73,41 +69,9 @@ class BookMapperTest {
         }
 
         @Test
-        @DisplayName("Given null bookEntity should throw BusinessException")
+        @DisplayName("Given null bookEntity should return null")
         void givenNullBookEntityShouldReturnNull() {
            assertNull(BookMapper.getInstance().fromBookEntityToBook(null));
-        }
-
-        @Test
-        @DisplayName("Given bookEntity without isbn should return null")
-        void  givenBookEntityWhitoutIsbnShouldReturnNull() {
-            PublisherEntity publisherEntity = new PublisherEntity(
-                    1L,
-                    "Editorial Ejemplo",
-                    "País Ejemplo"
-            );
-
-            List<AuthorEntity> authorsEntity = List.of(
-                    new AuthorEntity(1L,"Autor Uno", "Nacionalidad Uno", null, null, 1950, null, null),
-                    new AuthorEntity(2L,"Autor Dos", "Nacionalidad Dos", null, null, 1960, null, null)
-            );
-
-            BookEntity bookEntity = new BookEntity(
-                    1L,
-                    null,
-                    "Título en español",
-                    "Title in English",
-                    "Sinopsis en español",
-                    "Synopsis in English",
-                    new BigDecimal(20),
-                    10.0,
-                    "cover.jpg",
-                    LocalDate.of(2023, 1, 1),
-                    publisherEntity,
-                    authorsEntity
-            );
-
-            assertNull(BookMapper.getInstance().fromBookEntityToBook(bookEntity));
         }
 
         @Test
@@ -148,24 +112,24 @@ class BookMapperTest {
         @DisplayName("Given book should return bookEntity")
         void givenBookShouldReturnBookEntity() {
             List<Author> authors = List.of(
-                    new Author(1L, new Name("Autor Uno"), "Nacionalidad Uno", null, null, 1950, null, new Slug("prueba-1")),
-                    new Author(2L, new Name("Autor Dos"), "Nacionalidad Dos", null, null, 1960, null, new Slug("prueba-2"))
+                    new Author(1L,  "Autor Uno", "Nacionalidad Uno", null, null, 1950, null, "prueba-1"),
+                    new Author(2L,  "Autor Dos", "Nacionalidad Dos", null, null, 1960, null, "prueba-2")
             );
 
             Publisher publisher = new Publisher(
                     1L,
-                    new Name("Editorial Ejemplo"),
-                    new Slug("País Ejemplo")
+                    "Editorial Ejemplo",
+                    "País Ejemplo"
             );
 
             Book book = new Book(
                     2L,
-                    new Isbn("1234123567890"),
+                    "1234123567890",
                     "Título en español",
                     "Title in English",
                     "Sinopsis en español",
                     "Synopsis in English",
-                    new BasePrice(new BigDecimal(20)),
+                    new BigDecimal(20),
                     10.0,
                     "cover.jpg",
                     LocalDate.of(2023, 1, 1),
@@ -192,9 +156,9 @@ class BookMapperTest {
         }
 
         @Test
-        @DisplayName("Given null book should throw BusinessException")
-        void givenNullBookShouldThrowBusinessException() {
-            assertThrows(BusinessException.class, () -> BookMapper.getInstance().fromBookToBookEntity(null));
+        @DisplayName("Given null book should return null")
+        void givenNullBookShouldReturnNull() {
+            assertNull(BookMapper.getInstance().fromBookToBookEntity(null));
         }
 
         @Test
@@ -202,18 +166,18 @@ class BookMapperTest {
         void  givenBookWithoutAuthorsShouldReturnBookEntityWithEmptyAuthors() {
             Publisher publisher = new Publisher(
                     1L,
-                    new Name("Editorial Ejemplo"),
-                    new Slug("País Ejemplo")
+                    "Editorial Ejemplo",
+                    "País Ejemplo"
             );
 
             Book book = new Book(
                     2L,
-                    new Isbn("1231234567890"),
+                    "1231234567890",
                     "Título en español",
                     "Title in English",
                     "Sinopsis en español",
                     "Synopsis in English",
-                    new BasePrice(new BigDecimal(20)),
+                    new BigDecimal(20),
                     10.0,
                     "cover.jpg",
                     LocalDate.of(2023, 1, 1),
@@ -235,24 +199,24 @@ class BookMapperTest {
         @DisplayName("Given book should return bookDto")
         void givenBookShouldReturnBookDto() {
             List<Author> authors = List.of(
-                    new Author(1L, new Name("Autor Uno"), "Nacionalidad Uno", null, null, 1950, null, new Slug("prueba-1")),
-                    new Author(2L, new Name("Autor Dos"), "Nacionalidad Dos", null, null, 1960, null, new Slug("prueba-2"))
+                    new Author(1L, "Autor Uno", "Nacionalidad Uno", null, null, 1950, null, "prueba-1"),
+                    new Author(2L, "Autor Dos", "Nacionalidad Dos", null, null, 1960, null, "prueba-2")
             );
 
             Publisher publisher = new Publisher(
                     1L,
-                    new Name("Editorial Ejemplo"),
-                    new Slug("País Ejemplo")
+                    "Editorial Ejemplo",
+                    "País Ejemplo"
             );
 
             Book book = new Book(
                     3L,
-                    new Isbn("1234567890198"),
+                    "1234567890198",
                     "Título en español",
                     "Title in English",
                     "Sinopsis en español",
                     "Synopsis in English",
-                    new BasePrice(new BigDecimal(20)),
+                    new BigDecimal(20),
                     10.0,
                     "cover.jpg",
                     LocalDate.of(2023, 1, 1),
@@ -279,9 +243,9 @@ class BookMapperTest {
         }
 
         @Test
-        @DisplayName("Given null book should throw BusinessException")
-        void givenNullBookShouldThrowBusinessException() {
-            assertThrows(BusinessException.class, () -> BookMapper.getInstance().fromBookToBookDto(null));
+        @DisplayName("Given null book should return null")
+        void givenNullBookShouldReturnNull() {
+            assertNull(BookMapper.getInstance().fromBookToBookDto(null));
         }
 
         @Test
@@ -289,17 +253,17 @@ class BookMapperTest {
         void givenBookWithoutAuthorsShouldReturnBookDtoWithEmptyAuthors() {
             Publisher publisher = new Publisher(
                     1L,
-                    new Name("Editorial Ejemplo"),
-                    new Slug("País Ejemplo")
+                    "Editorial Ejemplo",
+                    "País Ejemplo"
             );
             Book book = new Book(
                     3L,
-                    new Isbn("1234567890987"),
+                    "1234567890987",
                     "Título en español",
                     "Title in English",
                     "Sinopsis en español",
                     "Synopsis in English",
-                    new BasePrice(new BigDecimal(20)),
+                    new BigDecimal(20),
                     10.0,
                     "cover.jpg",
                     LocalDate.of(2023, 1, 1),
@@ -320,24 +284,24 @@ class BookMapperTest {
         @DisplayName("Given bookDto should return book")
         void givenBookDtoShouldReturnBook() {
             List<Author> authors = List.of(
-                    new Author(1L, new Name("Autor Uno"), "Nacionalidad Uno", null, null, 1950, null, new Slug("prueba-1")),
-                    new Author(2L, new Name("Autor Dos"), "Nacionalidad Dos", null, null, 1960, null, new Slug("prueba-2"))
+                    new Author(1L, "Autor Uno", "Nacionalidad Uno", null, null, 1950, null, "prueba-1"),
+                    new Author(2L, "Autor Dos", "Nacionalidad Dos", null, null, 1960, null, "prueba-2")
             );
 
             Publisher publisher = new Publisher(
-                    2L,
-                    new Name("Editorial Ejemplo"),
-                    new Slug("País Ejemplo")
+                    1L,
+                    "Editorial Ejemplo",
+                    "País Ejemplo"
             );
 
             Book book = new Book(
                     4L,
-                    new Isbn("1231234567890"),
+                    "1231234567890",
                     "Título en español",
                     "Title in English",
                     "Sinopsis en español",
                     "Synopsis in English",
-                    new BasePrice(new BigDecimal(20)),
+                    new BigDecimal(20),
                     10.0,
                     "cover.jpg",
                     LocalDate.of(2023, 1, 1),
@@ -365,9 +329,9 @@ class BookMapperTest {
         }
 
         @Test
-        @DisplayName("Given null bookDto should throw BusinessException")
-        void givenNullBookDtoShouldThrowBusinessException() {
-            assertThrows(BusinessException.class, () -> BookMapper.getInstance().fromBookDtoToBook(null));
+        @DisplayName("Given null bookDto should return null")
+        void givenNullBookDtoShouldReturnNull() {
+            assertNull(BookMapper.getInstance().fromBookDtoToBook(null));
         }
 
         @Test
@@ -375,17 +339,17 @@ class BookMapperTest {
         void givenBookDtoWithoutAuthorsShouldReturnBookWithEmptyAuthors() {
             Publisher publisher = new Publisher(
                     2L,
-                    new Name("Editorial Ejemplo"),
-                    new Slug("País Ejemplo")
+                    "Editorial Ejemplo",
+                    "País Ejemplo"
             );
             Book book = new Book(
                     4L,
-                    new Isbn("1234512367890"),
+                    "1234512367890",
                     "Título en español",
                     "Title in English",
                     "Sinopsis en español",
                     "Synopsis in English",
-                    new BasePrice(new BigDecimal(20)),
+                    new BigDecimal(20),
                     10.0,
                     "cover.jpg",
                     LocalDate.of(2023, 1, 1),

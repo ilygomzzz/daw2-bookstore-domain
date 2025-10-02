@@ -1,14 +1,11 @@
 package es.javierserrano.domain.model;
 
-import es.javierserrano.domain.model.shared.Name;
-import es.javierserrano.domain.model.shared.Slug;
-
 public class Publisher {
     private Long id;
-    private Name name;
-    private Slug slug;
+    private String name;
+    private String slug;
 
-    public Publisher(Long id, Name name, Slug slug) {
+    public Publisher(Long id, String name, String slug) {
         this.id = id;
         this.name = name;
         this.slug = slug;
@@ -26,7 +23,7 @@ public class Publisher {
         return name.toString();
     }
 
-    public void setName(Name name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -34,7 +31,7 @@ public class Publisher {
         return slug.toString();
     }
 
-    public void setSlug(Slug slug) {
+    public void setSlug(String slug) {
         this.slug = slug;
     }
 }

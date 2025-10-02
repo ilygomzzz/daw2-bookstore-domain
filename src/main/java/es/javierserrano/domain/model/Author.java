@@ -1,19 +1,16 @@
 package es.javierserrano.domain.model;
 
-import es.javierserrano.domain.model.shared.Name;
-import es.javierserrano.domain.model.shared.Slug;
-
 public class Author {
     private Long id;
-    private Name name;
+    private String name;
     private String nationality;
     private String biographyEs;
     private String biographyEn;
     private int birthYear;
     private Integer deathYear;
-    private Slug slug;
+    private String slug;
 
-    public Author(Long id, Name name, String nationality, String biographyEs, String biographyEn, int birthYear, Integer deathYear, Slug slug) {
+    public Author(Long id, String name, String nationality, String biographyEs, String biographyEn, int birthYear, Integer deathYear, String slug) {
         this.id = id;
         this.name = name;
         this.nationality = nationality;
@@ -36,7 +33,7 @@ public class Author {
         return name.toString();
     }
 
-    public void setName(Name name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -84,7 +81,7 @@ public class Author {
         return slug.toString();
     }
 
-    public void setSlug(Slug slug) {
+    public void setSlug(String slug) {
         this.slug = slug;
     }
 }
