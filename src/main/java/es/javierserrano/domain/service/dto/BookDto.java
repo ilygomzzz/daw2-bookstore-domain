@@ -60,6 +60,6 @@ public record BookDto (
             this.authors = List.of();
         } else {
             this.authors = List.copyOf(authors);
-        };
+        }
     }
 }
