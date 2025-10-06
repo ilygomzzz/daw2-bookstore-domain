@@ -15,6 +15,7 @@
         <org.mockito.version>5.12.0</org.mockito.version>
         <org.apache.commons.csv.version>1.13.0</org.apache.commons.csv.version>
         <jakarta.validation.version>3.1.1</jakarta.validation.version>
+        <spring.boot.validation.version>3.4.3</spring.boot.validation.version>
     </properties>
     <dependencies>
         <dependency>
@@ -39,6 +40,12 @@
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
             <version>${jakarta.validation.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+            <version>${spring.boot.validation.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
