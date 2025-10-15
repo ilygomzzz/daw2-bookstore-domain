@@ -16,6 +16,7 @@
         <org.apache.commons.csv.version>1.13.0</org.apache.commons.csv.version>
         <jakarta.validation.version>3.1.1</jakarta.validation.version>
         <spring.boot.validation.version>3.4.3</spring.boot.validation.version>
+        <jakarta.transaction.version>2.0.1</jakarta.transaction.version>
     </properties>
     <dependencies>
         <dependency>
@@ -46,6 +47,11 @@
             <artifactId>spring-boot-starter-validation</artifactId>
             <version>${spring.boot.validation.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.transaction</groupId>
+            <artifactId>jakarta.transaction-api</artifactId>
+            <version>${jakarta.transaction.version}</version>
         </dependency>
     </dependencies>
 

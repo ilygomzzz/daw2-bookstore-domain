@@ -9,5 +9,5 @@ public interface AuthorService {
     AuthorDto getBySlug(String slug);
     AuthorDto create(AuthorDto authorDto);
     AuthorDto update(AuthorDto authorDto);
-    int delete(String slug);
+    void deleteBySlug(String slug);
 }

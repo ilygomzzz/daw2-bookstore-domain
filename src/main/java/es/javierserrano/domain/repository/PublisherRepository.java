@@ -14,5 +14,5 @@ public interface PublisherRepository {
 
     PublisherEntity save(PublisherEntity publisherEntity);
 
-    int deleteBySlug(String slug);
+    void deleteBySlug(String slug);
 }

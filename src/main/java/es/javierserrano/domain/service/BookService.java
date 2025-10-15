@@ -16,5 +16,5 @@ public interface BookService {
 
     BookDto update(BookDto bookDto);
 
-    int delete(String isbn);
+    void deleteByIsbn(String isbn);
 }

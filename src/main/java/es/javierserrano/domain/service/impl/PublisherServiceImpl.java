@@ -55,7 +55,7 @@ public class PublisherServiceImpl implements PublisherService {
     }
 
     @Override
-    public int delete(String slug) {
-        return publisherRepository.deleteBySlug(slug);
+    public void deleteBySlug(String slug) {
+        publisherRepository.deleteBySlug(slug);
     }
 }

@@ -58,7 +58,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public int delete(String slug) {
-        return authorRepository.delete(slug);
+    public void deleteBySlug(String slug) {
+        authorRepository.delete(slug);
     }
 }
