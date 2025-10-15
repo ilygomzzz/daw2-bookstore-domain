@@ -14,5 +14,5 @@ public interface AuthorRepository {
 
     Optional<AuthorEntity> findById(Long id);
 
-    void delete(String slug);
+    void deleteBySlug(String slug);
 }
