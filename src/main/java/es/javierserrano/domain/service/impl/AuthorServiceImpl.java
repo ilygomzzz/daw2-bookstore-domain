@@ -43,7 +43,7 @@ public class AuthorServiceImpl implements AuthorService {
 
         Author author = AuthorMapper.getInstance().fromAuthorDtoToAuthor(authorDto);
         AuthorEntity authorEntity = AuthorMapper.getInstance().fromAuthorToAuthorEntity(author);
-        AuthorEntity newAuthorEntity = authorRepository.create(authorEntity);
+        AuthorEntity newAuthorEntity = authorRepository.save(authorEntity);
         Author newAuthor = AuthorMapper.getInstance().fromAuthorEntityToAuthor(newAuthorEntity);
         return AuthorMapper.getInstance().fromAuthorToAuthorDto(newAuthor);
     }
@@ -52,7 +52,7 @@ public class AuthorServiceImpl implements AuthorService {
     public AuthorDto update(AuthorDto authorDto) {
         Author author = AuthorMapper.getInstance().fromAuthorDtoToAuthor(authorDto);
         AuthorEntity authorEntity = AuthorMapper.getInstance().fromAuthorToAuthorEntity(author);
-        AuthorEntity newAuthorEntity = authorRepository.update(authorEntity);
+        AuthorEntity newAuthorEntity = authorRepository.save(authorEntity);
         Author newAuthor = AuthorMapper.getInstance().fromAuthorEntityToAuthor(newAuthorEntity);
         return AuthorMapper.getInstance().fromAuthorToAuthorDto(newAuthor);
     }

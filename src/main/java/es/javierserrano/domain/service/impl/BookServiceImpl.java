@@ -57,7 +57,7 @@ public class BookServiceImpl implements BookService {
     public BookDto create(BookDto bookDto) {
         Book book =  BookMapper.getInstance().fromBookDtoToBook(bookDto);
         BookEntity bookEntity = BookMapper.getInstance().fromBookToBookEntity(book);
-        BookEntity newBookEntity = bookRepository.create(bookEntity);
+        BookEntity newBookEntity = bookRepository.save(bookEntity);
         Book newBook =  BookMapper.getInstance().fromBookEntityToBook(newBookEntity);
         return BookMapper.getInstance().fromBookToBookDto(newBook);
     }
@@ -66,13 +66,13 @@ public class BookServiceImpl implements BookService {
     public BookDto update(BookDto bookDto) {
         Book book =  BookMapper.getInstance().fromBookDtoToBook(bookDto);
         BookEntity bookEntity = BookMapper.getInstance().fromBookToBookEntity(book);
-        BookEntity newBookEntity = bookRepository.update(bookEntity);
+        BookEntity newBookEntity = bookRepository.save(bookEntity);
         Book newBook =  BookMapper.getInstance().fromBookEntityToBook(newBookEntity);
         return BookMapper.getInstance().fromBookToBookDto(newBook);
     }
 
     @Override
     public int delete(String isbn) {
-        return bookRepository.delete(isbn);
+        return bookRepository.deleteByIsbn(isbn);
     }
 }

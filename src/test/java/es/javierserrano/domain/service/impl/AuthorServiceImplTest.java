@@ -82,7 +82,7 @@ class AuthorServiceImplTest {
         void createShouldReturnCreatedAuthorDto() {
             AuthorDto authorDto = authorDtos.get(0);
             AuthorEntity authorEntity = authorEntities.get(0);
-            when(authorRepository.create(authorEntity)).thenReturn(authorEntity);
+            when(authorRepository.save(authorEntity)).thenReturn(authorEntity);
 
             AuthorDto result = authorServiceImpl.create(authorDto);
 

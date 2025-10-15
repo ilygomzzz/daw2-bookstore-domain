@@ -10,9 +10,9 @@ public interface AuthorRepository {
 
     Optional<AuthorEntity> findBySlug(String slug);
 
-    AuthorEntity create(AuthorEntity authorEntity);
+    AuthorEntity save(AuthorEntity authorEntity);
 
-    AuthorEntity update(AuthorEntity authorEntity);
+    Optional<AuthorEntity> findById(Long id);
 
     int delete(String slug);
 }

@@ -7,13 +7,13 @@ import java.util.Optional;
 
 public interface BookRepository {
 
-    Page<BookEntity> findAll(int page, int pageSize);
+    Page<BookEntity> findAll(int page, int size);
 
     Optional<BookEntity> findByIsbn(String isbn);
 
-    BookEntity create(BookEntity bookEntity);
+    BookEntity save(BookEntity bookEntity);
 
-    BookEntity update(BookEntity bookEntity);
+    Optional<BookEntity> findById(Long id);
 
-    int delete(String isbn);
+    int deleteByIsbn(String isbn);
 }

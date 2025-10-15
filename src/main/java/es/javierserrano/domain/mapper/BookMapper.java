@@ -120,9 +120,9 @@ public class BookMapper {
                 bookDto.cover(),
                 bookDto.publicationDate(),
                 PublisherMapper.getInstance().fromPublisherDtoToPublisher(bookDto.publisher()),
-                bookDto.authors().stream().map(AuthorMapper.getInstance()::fromAuthorDtoToAuthor).toList()
+                null
         );
-        if (bookDto.authors() != null && !bookDto.authors().isEmpty()) {
+        if (!bookDto.authors().isEmpty()) {
             book.setAuthors(bookDto.authors().stream().map(AuthorMapper.getInstance()::fromAuthorDtoToAuthor).toList());
         }
         return book;

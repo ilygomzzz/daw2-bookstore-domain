@@ -40,7 +40,7 @@ public class PublisherServiceImpl implements PublisherService {
     public PublisherDto create(PublisherDto publisherDto) {
         Publisher publisher = PublisherMapper.getInstance().fromPublisherDtoToPublisher(publisherDto);
         PublisherEntity publisherEntity = PublisherMapper.getInstance().fromPublisherToPublisherEntity(publisher);
-        PublisherEntity newPublisherEntity = publisherRepository.create(publisherEntity);
+        PublisherEntity newPublisherEntity = publisherRepository.save(publisherEntity);
         Publisher newPubliser = PublisherMapper.getInstance().fromPublisherEntityToPublisher(newPublisherEntity);
         return PublisherMapper.getInstance().fromPublisherToPublisherDto(newPubliser);
     }
@@ -49,13 +49,13 @@ public class PublisherServiceImpl implements PublisherService {
     public PublisherDto update(PublisherDto publisherDto) {
         Publisher publisher = PublisherMapper.getInstance().fromPublisherDtoToPublisher(publisherDto);
         PublisherEntity publisherEntity = PublisherMapper.getInstance().fromPublisherToPublisherEntity(publisher);
-        PublisherEntity newPublisherEntity = publisherRepository.update(publisherEntity);
+        PublisherEntity newPublisherEntity = publisherRepository.save(publisherEntity);
         Publisher newPubliser = PublisherMapper.getInstance().fromPublisherEntityToPublisher(newPublisherEntity);
         return PublisherMapper.getInstance().fromPublisherToPublisherDto(newPubliser);
     }
 
     @Override
     public int delete(String slug) {
-        return publisherRepository.delete(slug);
+        return publisherRepository.deleteBySlug(slug);
     }
 }

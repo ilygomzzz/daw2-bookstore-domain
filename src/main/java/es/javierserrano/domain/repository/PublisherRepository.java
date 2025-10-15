@@ -6,14 +6,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PublisherRepository {
-
     List<PublisherEntity> findAll();
+
+    Optional<PublisherEntity> findById(Long id);
 
     Optional<PublisherEntity> findBySlug(String slug);
 
-    PublisherEntity create(PublisherEntity publisherEntity);
+    PublisherEntity save(PublisherEntity publisherEntity);
 
-    PublisherEntity update(PublisherEntity publisherEntity);
-
-    int delete(String slug);
+    int deleteBySlug(String slug);
 }
