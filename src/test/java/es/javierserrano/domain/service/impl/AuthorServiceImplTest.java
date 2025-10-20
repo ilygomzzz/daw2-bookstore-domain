@@ -48,8 +48,8 @@ class AuthorServiceImplTest {
     @Test
     @DisplayName("GetAllShouldReturnListOfAuthorDtos")
     void getAllShouldReturnListOfAuthorDtos() {
-        when(authorRepository.getAll()).thenReturn(authorEntities);
-        List<AuthorDto> result = authorServiceImpl.getAll();
+        when(authorRepository.findAll(1,1)).thenReturn(authorEntities);
+        List<AuthorDto> result = authorServiceImpl.getAll(1,1);
         assertEquals(authorDtos, result);
     }
 

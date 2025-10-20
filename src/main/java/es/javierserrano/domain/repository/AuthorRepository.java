@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AuthorRepository {
-    List<AuthorEntity> getAll();
+    List<AuthorEntity> findAll(int page, int size);
 
     Optional<AuthorEntity> findBySlug(String slug);
 

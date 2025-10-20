@@ -18,9 +18,9 @@ public class PublisherServiceImpl implements PublisherService {
     }
 
     @Override
-    public List<PublisherDto> getAll() {
+    public List<PublisherDto> getAll(int page, int size) {
         return publisherRepository
-                .findAll()
+                .findAll(page, size)
                 .stream()
                 .map(PublisherMapper.getInstance()::fromPublisherEntityToPublisher)
                 .map(PublisherMapper.getInstance()::fromPublisherToPublisherDto)

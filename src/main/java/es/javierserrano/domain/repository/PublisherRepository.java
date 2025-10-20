@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PublisherRepository {
-    List<PublisherEntity> findAll();
+    List<PublisherEntity> findAll(int page, int size);
 
     Optional<PublisherEntity> findById(Long id);
 
