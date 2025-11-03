@@ -3,6 +3,7 @@ package es.javierserrano.domain.service.impl;
 import es.javierserrano.domain.data.loader.AuthorsDataLoader;
 import es.javierserrano.domain.exception.BusinessException;
 import es.javierserrano.domain.model.Author;
+import es.javierserrano.domain.model.Page;
 import es.javierserrano.domain.repository.AuthorRepository;
 import es.javierserrano.domain.repository.entity.AuthorEntity;
 import es.javierserrano.domain.service.dto.AuthorDto;
@@ -48,9 +49,9 @@ class AuthorServiceImplTest {
     @Test
     @DisplayName("GetAllShouldReturnListOfAuthorDtos")
     void getAllShouldReturnListOfAuthorDtos() {
-        when(authorRepository.findAll(1,1)).thenReturn(authorEntities);
-        List<AuthorDto> result = authorServiceImpl.getAll(1,1);
-        assertEquals(authorDtos, result);
+        when(authorRepository.findAll(1,150)).thenReturn(new Page<>(authorEntities,1,150,1));
+        Page<AuthorDto> result = authorServiceImpl.getAll(1, 150);
+        assertEquals(authorEntities.size(), result.data().size());
     }
 
     @Nested

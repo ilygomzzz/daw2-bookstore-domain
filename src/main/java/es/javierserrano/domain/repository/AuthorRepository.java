@@ -1,12 +1,13 @@
 package es.javierserrano.domain.repository;
 
+import es.javierserrano.domain.model.Page;
 import es.javierserrano.domain.repository.entity.AuthorEntity;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface AuthorRepository {
-    List<AuthorEntity> findAll(int page, int size);
+    Page<AuthorEntity> findAll(int page, int size);
 
     Optional<AuthorEntity> findBySlug(String slug);
 

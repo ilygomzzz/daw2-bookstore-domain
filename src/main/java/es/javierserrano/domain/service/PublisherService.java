@@ -1,11 +1,12 @@
 package es.javierserrano.domain.service;
 
+import es.javierserrano.domain.model.Page;
 import es.javierserrano.domain.service.dto.PublisherDto;
 
 import java.util.List;
 
 public interface PublisherService {
-    List<PublisherDto> getAll(int page, int size);
+    Page<PublisherDto> getAll(int page, int size);
 
     PublisherDto getBySlug(String slug);
 

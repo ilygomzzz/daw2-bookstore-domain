@@ -2,6 +2,7 @@ package es.javierserrano.domain.service.impl;
 
 import es.javierserrano.domain.exception.ResourceNotFoundException;
 import es.javierserrano.domain.mapper.PublisherMapper;
+import es.javierserrano.domain.model.Page;
 import es.javierserrano.domain.model.Publisher;
 import es.javierserrano.domain.repository.PublisherRepository;
 import es.javierserrano.domain.repository.entity.PublisherEntity;
@@ -18,13 +19,20 @@ public class PublisherServiceImpl implements PublisherService {
     }
 
     @Override
-    public List<PublisherDto> getAll(int page, int size) {
-        return publisherRepository
-                .findAll(page, size)
-                .stream()
+    public Page<PublisherDto> getAll(int page, int size) {
+        Page<PublisherEntity> publisherEntities = publisherRepository.findAll(page, size);
+
+        List<PublisherDto> itemsDto = publisherEntities.data().stream()
                 .map(PublisherMapper.getInstance()::fromPublisherEntityToPublisher)
                 .map(PublisherMapper.getInstance()::fromPublisherToPublisherDto)
                 .toList();
+
+        return new Page<>(
+                itemsDto,
+                publisherEntities.pageNumber(),
+                publisherEntities.pageSize(),
+                publisherEntities.totalElements()
+        );
     }
 
     @Override

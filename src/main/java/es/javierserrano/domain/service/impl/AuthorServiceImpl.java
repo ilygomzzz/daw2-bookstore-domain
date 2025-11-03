@@ -4,6 +4,7 @@ import es.javierserrano.domain.exception.BusinessException;
 import es.javierserrano.domain.exception.ResourceNotFoundException;
 import es.javierserrano.domain.mapper.AuthorMapper;
 import es.javierserrano.domain.model.Author;
+import es.javierserrano.domain.model.Page;
 import es.javierserrano.domain.repository.AuthorRepository;
 import es.javierserrano.domain.repository.entity.AuthorEntity;
 import es.javierserrano.domain.service.AuthorService;
@@ -20,11 +21,20 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public List<AuthorDto> getAll(int page, int size) {
-        return authorRepository.findAll(page, size).stream()
+    public Page<AuthorDto> getAll(int page, int size) {
+        Page<AuthorEntity> authorEntities = authorRepository.findAll(page, size);
+
+        List<AuthorDto> itemsDto = authorEntities.data().stream()
                 .map(AuthorMapper.getInstance()::fromAuthorEntityToAuthor)
                 .map(AuthorMapper.getInstance()::fromAuthorToAuthorDto)
                 .toList();
+
+        return new Page<>(
+                itemsDto,
+                authorEntities.pageNumber(),
+                authorEntities.pageSize(),
+                authorEntities.totalElements()
+        );
     }
 
     @Override
